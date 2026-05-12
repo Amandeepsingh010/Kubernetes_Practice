@@ -8,6 +8,7 @@ This is a Practice repo for Kubernetes
 Amazon Linux 2023 doesn’t support old yum repos the same way, so we use the official Kubernetes repo.
 
 1. Add Kubernetes repo
+
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
 name=Kubernetes
@@ -16,11 +17,14 @@ enabled=1
 gpgcheck=1
 gpgkey=https://pkgs.k8s.io/core:/stable:/v1.29/rpm/repodata/repomd.xml.key
 EOF
+
 2. Install kubelet, kubeadm, kubectl
 sudo dnf install -y kubelet kubeadm kubectl
+
 3. Enable & start kubelet
 sudo systemctl enable kubelet
 sudo systemctl start kubelet
+
 4. Verify
 kubelet --version
 kubectl version --client
@@ -33,10 +37,13 @@ This one is your magic wand for AWS Kubernetes ☁️
 
 1. Download latest eksctl
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" -o eksctl.tar.gz
+
 2. Extract
 tar -xzf eksctl.tar.gz
+
 3. Move to bin
 sudo mv eksctl /usr/local/bin
+
 4. Verify
 eksctl version
 
@@ -52,6 +59,8 @@ eksctl create cluster \
 --nodes 2 \
 --nodes-min 1 \
 --nodes-max 3
+
+
 🔍 What each flag means (important for interviews)
 --name → Cluster name
 --region → AWS region (use closest = ap-south-1 for India 🇮🇳)
