@@ -1,0 +1,12 @@
+apiVersion: v1          # API version for Pod resources
+kind: Pod              # Resource type
+metadata:              # Pod identification and labels
+  name: nginx-pod
+  labels:
+    app: nginx
+spec:                  # Pod specification
+  containers:
+  - name: nginx-container
+    image: nginx:latest
+    ports:
+    - containerPort: 80
